@@ -1,0 +1,6 @@
+# Тестовий режим: сайт закритий від індексації.
+# Для запуску: у data/site.json поставити "testMode": false і перезібрати.
+User-agent: *
+Disallow: /
+
+# Додатково всі сторінки віддають X-Robots-Tag: noindex (див. _headers)

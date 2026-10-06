@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Наскрізна аналітика для малого бізнесу: від кліку до продажу | vznk.agency</title>
+<meta name="description" content="Покроковий гайд: як налаштувати GA4, події, UTM-розмітку та CRM так, щоб бачити, який канал приносить гроші, а який лише витрачає бюджет.">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="canonical" href="https://vznk.github.io/article-naskrizna-analityka.html">
+<!-- hreflang-блок подключается, когда появятся языковые версии сайта -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="vznk.agency">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:title" content="Наскрізна аналітика для малого бізнесу: від кліку до продажу | vznk.agency">
+<meta property="og:description" content="Покроковий гайд: як налаштувати GA4, події, UTM-розмітку та CRM так, щоб бачити, який канал приносить гроші, а який лише витрачає бюджет.">
+<meta property="og:url" content="https://vznk.github.io/article-naskrizna-analityka.html">
+<meta property="og:image" content="https://vznk.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Наскрізна аналітика для малого бізнесу: від кліку до продажу | vznk.agency">
+<meta name="twitter:description" content="Покроковий гайд: як налаштувати GA4, події, UTM-розмітку та CRM так, щоб бачити, який канал приносить гроші, а який лише витрачає бюджет.">
+<meta name="twitter:image" content="https://vznk.github.io/assets/og.png">
+<meta name="theme-color" content="#08090B">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A0B0D'/><path d='M8 9l8 15 8-15' stroke='%2369FF97' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preload" href="assets/fonts/Manrope-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/style.css">
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}.mobile-menu[hidden]{display:none}</style></noscript>
+<link rel="manifest" href="assets/manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script>
+  // тема до первой отрисовки — без «мигания»
+  (function () {
+    try {
+      // тёмная тема — основная (по бренду); светлая включается пользователем вручную
+      var theme = localStorage.getItem('vznk-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body class="">
+<a class="skip-link" href="#main">Перейти до контенту</a>
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="vznk.agency — на головну">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="9"/><path d="M8.5 10l7.5 14 7.5-14" fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="brand-text">vznk<em>.agency</em></span>
+    </a>
+
+    <nav class="nav" aria-label="Головна навігація">
+      <a href="cases.html" data-nav="cases" data-i18n="nav.cases">Кейси</a>
+
+      <div class="nav-drop">
+        <button type="button" class="nav-drop-btn" aria-expanded="false" data-nav="services" data-i18n="nav.services">
+          Послуги
+          <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mega" role="menu">
+          <div class="mega-col">
+            <p class="mega-title" data-i18n="mega.acq">Залучення клієнтів</p>
+            <a href="services.html#target" role="menuitem">
+              <b data-i18n="svc.target">Таргетована реклама</b>
+              <span>Meta · Instagram · TikTok</span>
+            </a>
+            <a href="services.html#context" role="menuitem">
+              <b data-i18n="svc.context">Контекстна реклама</b>
+              <span>Google Ads · GA4</span>
+            </a>
+          </div>
+          <div class="mega-col">
+            <p class="mega-title" data-i18n="mega.web">Сайти та аналітика</p>
+            <a href="services.html#web" role="menuitem">
+              <b data-i18n="svc.web">Сайт під ключ</b>
+              <span>Landing · E-commerce · SEO-ready</span>
+            </a>
+            <a href="services.html#audit" role="menuitem">
+              <b data-i18n="svc.audit">Аудит і стратегія</b>
+              <span>GA4 · аналітика · воронка</span>
+            </a>
+          </div>
+          <a class="mega-promo" href="cases.html">
+            <span class="chip chip-accent" data-i18n="mega.case">Новий кейс</span>
+            <b>Е-commerce: ROAS 5,1x за 3 місяці</b>
+            <span class="mega-promo-link" data-i18n="mega.all">Дивитись усі кейси →</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="index.html#process" data-nav="process" data-i18n="nav.process">Процес</a>
+      <a href="blog.html" data-nav="blog" data-i18n="nav.blog">Блог</a>
+      <a href="contacts.html" data-nav="contacts" data-i18n="nav.contacts">Контакти</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang" data-lang-switch>
+        <button type="button" class="lang-btn" aria-expanded="false" aria-haspopup="listbox">
+          <span class="lang-current">UA</span>
+          <svg width="10" height="10" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <div class="lang-list" role="listbox" aria-label="Мова сайту">
+          <button type="button" role="option" data-lang="uk" aria-selected="true"><b>UA</b><span>Українська</span></button>
+          <button type="button" role="option" data-lang="ru" aria-selected="false"><b>RU</b><span>Русский</span></button>
+          <button type="button" role="option" data-lang="en" aria-selected="false"><b>EN</b><span>English</span></button>
+        </div>
+      </div>
+
+      <button type="button" class="icon-btn theme-toggle" aria-label="Змінити тему" title="Світла / темна тема">
+        <svg class="ico-moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <svg class="ico-sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+
+      <a class="btn btn-primary btn-sm header-cta" href="contacts.html#form" data-i18n="cta.consult">Отримати консультацію</a>
+
+      <button type="button" class="burger" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" hidden>
+    <a href="cases.html" data-i18n="nav.cases">Кейси</a>
+    <a href="services.html" data-i18n="nav.services">Послуги</a>
+    <a href="index.html#process" data-i18n="nav.process">Процес</a>
+    <a href="blog.html" data-i18n="nav.blog">Блог</a>
+    <a href="contacts.html" data-i18n="nav.contacts">Контакти</a>
+    <div class="mobile-menu-foot">
+      <a class="btn btn-primary btn-block" href="contacts.html#form" data-i18n="cta.consult">Отримати консультацію</a>
+      <div class="messengers">
+        <a href="https://t.me/vznk_rv" class="btn btn-ghost btn-block">Telegram</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+
+<article>
+  <section class="page-head">
+    <div class="container">
+      <div class="notice" role="note"><b>Демонстраційний матеріал.</b> Структура справжня, цифри та текст — приклад для наповнення. Замінюється реальними даними клієнта перед запуском.</div>
+      <nav class="breadcrumbs" aria-label="Навігаційний ланцюжок">
+        <a href="index.html">Головна</a><span>/</span><a href="blog.html">Блог</a><span>/</span><span>Аналітика</span>
+      </nav>
+      <header class="article-head">
+        <div class="case-tags"><span class="chip chip-accent">Аналітика</span><span class="chip">Гайд</span><span class="chip">14 хв читання</span></div>
+        <h1>Наскрізна аналітика для малого бізнесу: від кліку до продажу</h1>
+        <p class="lead">Більшість бізнесів бачать лише верхівку воронки: кліки та заявки. Нижче — практичний процес, який ми повторюємо на кожному проєкті, щоб бачити, який канал приносить гроші, а який просто витрачає бюджет.</p>
+        <div class="article-meta">
+          <span class="avatar" style="width:36px;height:36px;font-size:.78rem" aria-hidden="true">VZ</span>
+          <span><b style="color:var(--text)">Володимир З.</b> · Media Buyer</span>
+          <span class="dot-sep"></span>
+          <span>18 листопада 2025</span>
+        </div>
+      </header>
+    </div>
+  </section>
+
+  <section class="section section-tight-top">
+    <div class="container">
+      <div class="layout-article">
+        <aside class="toc" aria-label="Зміст статті">
+          <p class="toc-title">Зміст</p>
+          <ol>
+            <li><a href="#why">Навіщо наскрізна аналітика</a></li>
+            <li><a href="#events">Крок 1. Події та цілі</a></li>
+            <li><a href="#utm">Крок 2. UTM і джерела</a></li>
+            <li><a href="#crm">Крок 3. Зв&#x27;язка з CRM</a></li>
+            <li><a href="#reports">Крок 4. Звіти, які читають</a></li>
+            <li><a href="#mistakes">5 частих помилок</a></li>
+            <li><a href="#checklist">Чекліст впровадження</a></li>
+          </ol>
+          <a class="btn btn-ghost btn-sm" style="margin-top:18px" href="#lead">Отримати аудит аналітики</a>
+        </aside>
+
+        <div class="prose">
+          <figure>
+            <div class="thumb" style="aspect-ratio:16/7;border-radius:var(--r-lg);border:1px solid var(--line)">
+              <div class="thumb-inner"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-lines"><i></i><i></i><i></i></div><div class="thumb-blocks"><i></i><i></i><i></i></div></div>
+            </div>
+            <figcaption>Приклад дашборду: витрати, заявки та продажі в одному вікні. Демонстраційний матеріал.</figcaption>
+          </figure>
+
+          <h2 id="why">Навіщо наскрізна аналітика</h2>
+          <p>Класична ситуація: реклама дає 200 заявок на місяць, відділ продажів каже, що «ліди погані», а маркетолог показує зростання кліків. Проблема не в людях, а в тому, що <strong>кожен дивиться на свою частину воронки</strong>.</p>
+          <p>Наскрізна аналітика зшиває три шари даних:</p>
+          <ul>
+            <li>реклама — витрати, покази, кліки, кампанії;</li>
+            <li>сайт — поведінка, конверсії, джерела;</li>
+            <li>продажі — угоди, суми, причини відмов.</li>
+          </ul>
+          <blockquote>
+            <p>Правило, яке економить бюджети: якщо канал не можна порахувати до грошей — він не масштабується, він просто витрачається.</p>
+          </blockquote>
+
+          <h2 id="events">Крок 1. Події та цілі</h2>
+          <p>У GA4 «конверсія» — це подія, позначена як ключова. Мінімальний набір для більшості сайтів послуг:</p>
+          <ol>
+            <li><code>generate_lead</code> — відправка форми;</li>
+            <li><code>click_telegram</code> / <code>click_email</code> — перехід у месенджер або пошту;</li>
+            <li><code>view_pricing</code> — перегляд сторінки з цінами;</li>
+            <li><code>scroll_75</code> — глибоке читання (для блогу);</li>
+            <li><code>begin_checkout</code> — для e-commerce.</li>
+          </ol>
+          <div class="callout">
+            <p><strong>Важливо:</strong> подію треба дублювати на сервері (Measurement Protocol або CAPI), інакше блокувальники реклами «з'їдають» до 25% даних.</p>
+          </div>
+
+          <h2 id="utm">Крок 2. UTM і джерела</h2>
+          <p>UTM-розмітка — найдешевший спосіб навести лад. Ми використовуємо єдиний шаблон:</p>
+          <div class="table-wrap"><table>
+            <thead>
+              <tr><th>Параметр</th><th>Приклад</th><th>Правило</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>utm_source</td><td>facebook, google</td><td>тільки нижній регістр, без «fb»</td></tr>
+              <tr><td>utm_medium</td><td>cpc, organic, email</td><td>фіксований список із 6 значень</td></tr>
+              <tr><td>utm_campaign</td><td>spring_sale_2025</td><td>латиниця, підкреслення</td></tr>
+              <tr><td>utm_content</td><td>video_ugc_01</td><td>для A/B тестів креативів</td></tr>
+            </tbody>
+          </table></div>
+
+          <h2 id="crm">Крок 3. Зв'язка з CRM</h2>
+          <p>Без CRM ви бачите заявки, але не бачите гроші. Мінімум: передавати в CRM <code>gclid</code>, <code>fbclid</code> та <code>client_id</code> разом із заявкою, а назад — статуси угод.</p>
+          <p>Далі рахуємо те, що реально керує рішеннями:</p>
+          <ul>
+            <li>CPL за каналом;</li>
+            <li>конверсію з ліда в оплату;</li>
+            <li>CAC і ROAS на рівні кампанії.</li>
+          </ul>
+
+          <h2 id="reports">Крок 4. Звіти, які читають</h2>
+          <p>Один екран, три блоки: скільки витратили, скільки отримали заявок, скільки заробили. Усе інше — у деталізації за запитом.</p>
+          <div class="callout">
+            <p><strong>Наш підхід:</strong> клієнт отримує дашборд із живими даними та щомісячний звіт із висновками: що масштабуємо, що вимикаємо, що тестуємо далі.</p>
+          </div>
+
+          <h2 id="mistakes">5 частих помилок</h2>
+          <ol>
+            <li>Одна ціль «всі заявки» без розділення за якістю.</li>
+            <li>UTM «руками» з різним написанням джерел.</li>
+            <li>Відсутність серверних подій.</li>
+            <li>Звіти без прив'язки до витрат.</li>
+            <li>Немає еталонного періоду — неможливо порівняти «до/після».</li>
+          </ol>
+
+          <h2 id="checklist">Чекліст впровадження</h2>
+          <ul>
+            <li>Список цілей і подій погоджено з власником бізнесу.</li>
+            <li>GA4 + серверні події + CRM зшиті.</li>
+            <li>UTM-політика зафіксована в документі.</li>
+            <li>Дашборд із витратами, заявками та продажами.</li>
+            <li>Регулярний цикл: тиждень — оптимізація, місяць — висновки.</li>
+          </ul>
+
+          <div class="author-card">
+            <span class="avatar" aria-hidden="true">VZ</span>
+            <div>
+              <b>Володимир З.</b>
+              <p>Media Buyer у vznk.agency. Пише про аналітику, Meta та Google Ads на основі власних проєктів.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>
+
+<section class="section section-tight-top">
+  <div class="container">
+    <div class="section-head">
+      <div><p class="eyebrow">Читати далі</p><h2>Схожі статті</h2></div>
+      <div class="section-head-actions"><a class="btn btn-ghost" href="blog.html">Усі статті <span class="arrow" aria-hidden="true">→</span></a></div>
+    </div>
+    <div class="cards-3">
+      <article class="post-card">
+        <div class="post-cover cover-blue"><div class="thumb-inner"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-lines"><i></i><i></i><i></i></div><div class="thumb-blocks"><i></i><i></i><i></i></div></div></div>
+        <div class="post-body">
+          <div class="case-tags"><span class="chip chip-accent">Google Ads</span></div>
+          <h3><a href="article-cpc-benchmarky-2025.html">Скільки коштує клік у 2025: бенчмарки за 12 нішами</a></h3>
+          <div class="post-meta"><span>12 листопада</span><span class="dot-sep"></span><span>8 хв</span></div>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-cover"><div class="thumb-inner"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-lines"><i></i><i></i><i></i></div><div class="thumb-blocks"><i></i><i></i><i></i></div></div></div>
+        <div class="post-body">
+          <div class="case-tags"><span class="chip chip-accent">Meta Ads</span></div>
+          <h3><a href="article-kreatyvy-dlya-testiv.html">Скільки креативів потрібно тестувати, щоб знайти «той самий»</a></h3>
+          <div class="post-meta"><span>8 листопада</span><span class="dot-sep"></span><span>7 хв</span></div>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-cover cover-violet"><div class="thumb-inner"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-lines"><i></i><i></i><i></i></div><div class="thumb-blocks"><i></i><i></i><i></i></div></div></div>
+        <div class="post-body">
+          <div class="case-tags"><span class="chip chip-accent">Сайти</span></div>
+          <h3><a href="article-core-web-vitals.html">Core Web Vitals: як прискорити сайт і не втратити дизайн</a></h3>
+          <div class="post-meta"><span>28 жовтня</span><span class="dot-sep"></span><span>11 хв</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="lead">
+  <div class="container">
+    <div class="cta-band">
+      <div>
+        <p class="eyebrow">Безкоштовно</p>
+        <h2>Аудит вашої<br>аналітики</h2>
+        <p class="lead">Подивимось GA4, цілі, UTM і зв'язку з CRM. Надішлемо список із 5–10 конкретних правок, які можна впровадити навіть самотужки.</p>
+        <ul class="trust-list">
+          <li><span class="avatar" style="width:34px;height:34px;font-size:.75rem" aria-hidden="true">1</span><span><b>2 робочі дні</b>Стільки потрібно на аудит і висновки.</span></li>
+          <li><span class="avatar avatar-blue" style="width:34px;height:34px;font-size:.75rem" aria-hidden="true">2</span><span><b>Без зобов'язань</b>Навіть якщо не почнемо співпрацю.</span></li>
+        </ul>
+      </div>
+      <div>
+        <form class="form" data-lead-form novalidate>
+          <input type="hidden" name="source" value="Стаття: Наскрізна аналітика для малого бізнесу: від кліку до продажу">
+          <div class="field"><label for="a-name">Ім'я</label><input id="a-name" name="name" type="text" placeholder="Як до вас звертатися" required></div>
+          <div class="field"><label for="a-site">Адреса сайту</label><input id="a-site" name="site" type="text" placeholder="example.com"></div>
+          <div class="field"><label for="a-contact">Telegram або email</label><input id="a-contact" name="contact" type="text" placeholder="@username або email" required></div>
+          <button class="btn btn-primary btn-lg" type="submit">Запросити аудит</button>
+          <p class="form-note">Надсилаючи форму, ви погоджуєтесь з <a href="#">політикою конфіденційності</a>.</p>
+        </form>
+        <div class="form-success" role="status">Дякуємо! Аудит надішлемо протягом 2 робочих днів.</div>
+        <div class="form-error" role="alert" hidden>Не вдалося надіслати автоматично. Натисніть <a href="https://t.me/vznk_rv">Telegram</a> — заявка відкриється готовим повідомленням, або напишіть на vznk.job@gmail.com.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Наскрізна аналітика для малого бізнесу: від кліку до продажу",
+  "description": "Покроковий гайд: як налаштувати GA4, події, UTM-розмітку та CRM так, щоб бачити, який канал приносить гроші, а який лише витрачає бюджет.",
+  "datePublished": "2025-11-18",
+  "dateModified": "2025-11-20",
+  "author": {
+    "@type": "Person",
+    "name": "Володимир З."
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "vznk.agency"
+  },
+  "inLanguage": "uk",
+  "mainEntityOfPage": "https://vznk.github.io/article-naskrizna-analityka"
+}
+</script>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="9"/><path d="M8.5 10l7.5 14 7.5-14" fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="brand-text">vznk<em>.agency</em></span>
+        </a>
+        <p class="muted" data-i18n="footer.about">Digital-агентство: реклама, яка приводить клієнтів, і сайти, які продають.</p>
+        <div class="messengers">
+          <a class="icon-btn" href="https://t.me/vznk_rv" aria-label="Telegram">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4.5L2.8 11.4c-.9.3-.9 1.6.1 1.9l4.3 1.3 1.6 4.9c.3.8 1.3 1 1.8.3l2.3-3 4.6 3.4c.7.5 1.7.1 1.9-.8L22.9 5.6c.2-1-.8-1.6-1.9-1.1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="icon-btn" href="https://www.facebook.com/" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5h2.2V5.4h-2.6c-2.2 0-3.6 1.4-3.6 3.7v1.6H8.2v3.1h2.3V21h3.2v-7.2h2.4l.4-3.1h-2.8V9.6c0-.7.3-1.1.8-1.1z" fill="currentColor"/></svg>
+          </a>
+          <a class="icon-btn" href="https://www.instagram.com/" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="16.9" cy="7.1" r="1.1" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer-col" aria-label="Послуги">
+        <p class="footer-title" data-i18n="footer.services">Послуги</p>
+        <a href="services.html#target" data-i18n="svc.target">Таргетована реклама</a>
+        <a href="services.html#context" data-i18n="svc.context">Контекстна реклама</a>
+        <a href="services.html#web" data-i18n="svc.web">Сайт під ключ</a>
+        <a href="services.html#seo" data-i18n="svc.seo">SEO та контент</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Компанія">
+        <p class="footer-title" data-i18n="footer.company">Компанія</p>
+        <a href="cases.html" data-i18n="nav.cases">Кейси</a>
+        <a href="blog.html" data-i18n="nav.blog">Блог</a>
+        <a href="index.html#process" data-i18n="nav.process">Процес роботи</a>
+        <a href="contacts.html" data-i18n="nav.contacts">Контакти</a>
+      </nav>
+
+      <div class="footer-col">
+        <p class="footer-title" data-i18n="footer.contacts">Контакти</p>
+        <a href="mailto:vznk.job@gmail.com">vznk.job@gmail.com</a>
+        <a href="https://t.me/vznk_rv">Telegram: @vznk_rv</a>
+        <p class="muted small" data-i18n="footer.hours">Пн–Пт, 10:00–19:00 (EET)</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="muted small">© 2025 vznk.agency. <span data-i18n="footer.rights">Усі права захищені.</span></p>
+      <div class="footer-legal">
+        <a href="#" data-i18n="footer.privacy">Політика конфіденційності</a>
+        <a href="#" data-i18n="footer.terms">Умови співпраці</a>
+      </div>
+      <div class="footer-langs" data-lang-switch>
+        <button type="button" data-lang="uk" class="is-active">UA</button>
+        <button type="button" data-lang="ru">RU</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="messenger-fab">
+  <a href="https://t.me/vznk_rv" class="fab" aria-label="Написати в Telegram" data-tip="Написати в Telegram">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4.5L2.8 11.4c-.9.3-.9 1.6.1 1.9l4.3 1.3 1.6 4.9c.3.8 1.3 1 1.8.3l2.3-3 4.6 3.4c.7.5 1.7.1 1.9-.8L22.9 5.6c.2-1-.8-1.6-1.9-1.1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+<div class="mobile-bar">
+  <a class="btn btn-primary" href="contacts.html#form" data-i18n="cta.consultShort">Консультація</a>
+  <a class="btn btn-ghost" href="https://t.me/vznk_rv">Telegram</a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "vznk.agency",
+  "description": "Digital-агентство: таргетована та контекстна реклама, розробка сайтів під ключ.",
+  "url": "https://vznk.github.io/",
+  "email": "vznk.job@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Рівне, Україна" },
+  "areaServed": ["UA", "EU", "US"],
+  "priceRange": "$$",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "87" }
+}
+</script>
+<script src="assets/config.js"></script>
+<script src="assets/app.js" defer></script>
+</body>
+</html>
+

@@ -1,0 +1,8 @@
+# 301-редиректы со старых адресов Tilda (карта уточняется после аудита ссылок).
+# Важно: Cloudflare Pages сам отдаёт /cases по файлу cases.html,
+# поэтому правила-переписывания «/cases → /cases.html» добавлять нельзя — будет цикл.
+/posluhy      /services   301
+/uslugi       /services   301
+/kontakty     /contacts   301
+/keysy        /cases      301
+/case         /cases      301
